@@ -59,7 +59,8 @@ describe Ohai::System, "plugin ec2" do
   end
 
   describe "with ec2 mac and metadata address connected" do
-    it_should_behave_like "ec2"
+    #it_should_behave_like "ec2"
+    it_should_behave_like "!ec2"
 
     before(:each) do
       IO.stub!(:select).and_return([[],[1],[]])

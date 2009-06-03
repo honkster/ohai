@@ -89,7 +89,9 @@ end
 def looks_like_ec2?
   # Try non-blocking connect so we don't "block" if 
   # the Xen environment is *not* EC2
-  has_ec2_mac? && can_metadata_connect?(EC2_METADATA_ADDR,80)
+
+  # HACK by MG/NC to not try to contact some mysterious IP address and fail
+  false && has_ec2_mac? && can_metadata_connect?(EC2_METADATA_ADDR,80)
 end
 
 if looks_like_ec2?
